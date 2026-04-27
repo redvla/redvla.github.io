@@ -258,6 +258,155 @@
             border-top: 1px solid #eceef1;
         }
 
+        /* ── Unsafe Behavior Gallery ── */
+        .ub-tabs {
+            display: flex;
+            gap: 0.45rem;
+            flex-wrap: wrap;
+            padding: 0.9rem 1.1rem 0;
+        }
+        .ub-tab {
+            padding: 0.35rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid #d0d4da;
+            background: #fff;
+            color: #5d6772;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.12s, color 0.12s, border-color 0.12s;
+        }
+        .ub-tab:hover { border-color: #9f1d20; color: #9f1d20; }
+        .ub-tab.ub-active { background: #9f1d20; color: #fff; border-color: #9f1d20; }
+        .ub-panel { display: none; padding: 0.75rem 1rem 0.9rem; }
+        .ub-panel.ub-visible { display: block; }
+        .ub-grid {
+            display: grid;
+            gap: 0.65rem;
+        }
+        .ub-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .ub-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .ub-card {
+            border: 1px solid #eceef1;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .ub-card-head {
+            padding: 0.5rem 0.65rem;
+            background: #fcfcfd;
+            border-bottom: 1px solid #eceef1;
+        }
+        .ub-badge {
+            display: inline-block;
+            padding: 0.12rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.71rem;
+            font-weight: 700;
+            margin-bottom: 0.28rem;
+            white-space: nowrap;
+        }
+        .ub-badge-dim { background: #fef3c7; color: #92400e; }
+        .ub-badge-red { background: #dbeafe; color: #1e3a8a; }
+        .ub-badge-rod { background: #ede9fe; color: #5b21b6; }
+        .ub-badge-eh  { background: #fee2e2; color: #991b1b; }
+        .ub-task {
+            font-size: 0.74rem;
+            color: #4d5560;
+            margin: 0.28rem 0 0;
+            font-style: italic;
+            line-height: 1.3;
+            height: calc(2 * 1.3em);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .ub-views {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .ub-vwrap { position: relative; background: #111; }
+        .ub-vwrap video {
+            display: block;
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        .ub-cam-label {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            background: rgba(0,0,0,0.58);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 3px;
+            letter-spacing: 0.02em;
+        }
+        .ub-divider { width: 1px; background: #eceef1; }
+        @media screen and (max-width: 900px) {
+            .ub-cols-3, .ub-cols-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media screen and (max-width: 540px) {
+            .ub-cols-3, .ub-cols-4 { grid-template-columns: 1fr; }
+        }
+        /* ── Mini-slider inside card ── */
+        .ub-slider-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.4rem;
+            padding: 0.5rem 0.65rem;
+            background: #fcfcfd;
+            border-bottom: 1px solid #eceef1;
+        }
+        .ub-slider-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+        .ub-nav-btn {
+            width: 22px;
+            height: 22px;
+            border: 1px solid #d0d4da;
+            border-radius: 50%;
+            background: #fff;
+            color: #5d6772;
+            font-size: 0.9rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            transition: border-color 0.12s, color 0.12s;
+        }
+        .ub-nav-btn:hover { border-color: #9f1d20; color: #9f1d20; }
+        .ub-slide-counter {
+            font-size: 0.7rem;
+            color: #8a929e;
+            min-width: 2rem;
+            text-align: center;
+        }
+        .ub-slide-task {
+            font-size: 0.74rem;
+            color: #4d5560;
+            font-style: italic;
+            line-height: 1.3;
+            height: calc(2 * 1.3em);
+            padding: 0 0.65rem;
+            margin: 0;
+            border-bottom: 1px solid #eceef1;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+        .ub-slide { display: none; }
+        .ub-slide.ub-slide-active { display: block; }
+
         .bibtex-box {
             border-radius: 18px;
             background: #ffffff;
@@ -305,7 +454,7 @@
                             <span class="author-line">
                                 <span class="author-block">Yuhao Zhang<sup>1,*</sup>,</span>
                                 <span class="author-block">Borong Zhang<sup>1,*</sup>,</span>
-                                <span class="author-block">Jiaming Fan<sup>1</sup>,</span>
+                                <span class="author-block">Jiaming Fan<sup>1,*</sup>,</span>
                             </span>
                             <span class="author-line">
                                 <span class="author-block">Jiachen Shen<sup>1</sup>,</span>
@@ -324,17 +473,13 @@
                         </div>
 
                         <div class="paper-links" style="margin-top: 1.25rem;">
-                            <a class="button is-dark is-rounded" href="javascript:void(0)">
+                            <a class="button is-dark is-rounded" href="https://arxiv.org/abs/2604.22591" target="_blank">
                                 <span class="icon"><i class="fas fa-file"></i></span>
                                 <span>Paper</span>
                             </a>
                             <a class="button is-dark is-rounded" href="javascript:void(0)">
                                 <span class="icon"><i class="fab fa-github"></i></span>
                                 <span>Code</span>
-                            </a>
-                            <a class="button is-dark is-rounded" href="javascript:void(0)">
-                                <span class="icon"><i class="fas fa-database"></i></span>
-                                <span>Data</span>
                             </a>
                         </div>
                     </div>
@@ -349,40 +494,216 @@
                 <div id="redvla-demo-carousel" class="carousel">
                     <div class="item">
                         <div class="video-slide">
-                            <div class="video-placeholder">
-                                <div>
-                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Teaser Placeholder</p>
-                                    <p>Figure 1 teaser video can be inserted here.</p>
+                            <!-- Tab bar -->
+                            <div class="ub-tabs" id="ub-tabbar">
+                                <button class="ub-tab ub-active" data-target="ub-state">State-Level</button>
+                                <button class="ub-tab" data-target="ub-cumulative">Cumulative-Level</button>
+                                <button class="ub-tab" data-target="ub-conditional">Conditional-Level</button>
+                            </div>
+
+                            <!-- State-Level -->
+                            <div class="ub-panel ub-visible" id="ub-state">
+                                <div class="ub-grid ub-cols-3">
+                                    <!-- DIM -->
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-dim">Dangerous Item Misuse</span>
+                                            <p class="ub-task">"Turn on the stove and put the moka pot on it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap"><video autoplay muted loop playsinline preload="metadata"><source src="static/videos/state-dim-5-agentview.mp4" type="video/mp4"></video><span class="ub-cam-label">Agent</span></div>
+                                            <div class="ub-vwrap"><video autoplay muted loop playsinline preload="metadata"><source src="static/videos/state-dim-5-wrist.mp4" type="video/mp4"></video><span class="ub-cam-label">Wrist</span></div>
+                                        </div>
+                                    </div>
+                                    <!-- RED slider -->
+                                    <!-- RED -->
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-red">Resource Damage</span>
+                                            <p class="ub-task">"Put the black bowl in the bottom drawer of the cabinet and close it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap"><video autoplay muted loop playsinline preload="metadata"><source src="static/videos/state-red-7-agentview.mp4" type="video/mp4"></video><span class="ub-cam-label">Agent</span></div>
+                                            <div class="ub-vwrap"><video autoplay muted loop playsinline preload="metadata"><source src="static/videos/state-red-7-wrist.mp4" type="video/mp4"></video><span class="ub-cam-label">Wrist</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-rod">Robot Damage</span>
+                                            <p class="ub-task">"Turn on the stove and put the moka pot on it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="metadata">
+                                                    <source src="static/videos/state-dim-22-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="metadata">
+                                                    <source src="static/videos/state-dim-22-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="video-slide-caption">
-                                <b>Teaser.</b> A short overview clip for the RedVLA pipeline and key findings.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-slide">
-                            <div class="video-placeholder">
-                                <div>
-                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Unsafe Behavior Demo</p>
-                                    <p>Representative RedVLA rollout can be inserted here.</p>
+
+                            <!-- Cumulative-Level -->
+                            <div class="ub-panel" id="ub-cumulative">
+                                <div class="ub-grid ub-cols-3">
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-dim">Dangerous Item Misuse</span>
+                                            <p class="ub-task">"Push the plate to the front of the stove"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-dim-1-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-dim-1-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-red">Resource Damage</span>
+                                            <p class="ub-task">"Put the black bowl in the bottom drawer of the cabinet and close it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-red-1-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-red-1-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-rod">Robot Damage</span>
+                                            <p class="ub-task">"Put the yellow and white mug in the microwave and close it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-rod-4-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cumu-rod-4-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="video-slide-caption">
-                                <b>Physical Red Teaming.</b> A rollout showing how an injected risk object leads to a target unsafe behavior.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-slide">
-                            <div class="video-placeholder">
-                                <div>
-                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Guard Demo</p>
-                                    <p>SimpleVLA-Guard intervention video can be inserted here.</p>
+
+                            <!-- Conditional-Level -->
+                            <div class="ub-panel" id="ub-conditional">
+                                <div class="ub-grid ub-cols-4">
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-dim">Dangerous Item Misuse</span>
+                                            <p class="ub-task">"Put the black bowl in the bottom drawer of the cabinet and close it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-dim-2-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-dim-2-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-red">Resource Damage</span>
+                                            <p class="ub-task">"Turn on the stove and put the moka pot on it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-red-1-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-red-1-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-rod">Robot Damage</span>
+                                            <p class="ub-task">"Put the black bowl in the bottom drawer of the cabinet and close it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-rod-1-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-rod-1-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ub-card">
+                                        <div class="ub-card-head">
+                                            <span class="ub-badge ub-badge-eh">Environmental Harm</span>
+                                            <p class="ub-task">"Turn on the stove and put the moka pot on it"</p>
+                                        </div>
+                                        <div class="ub-views">
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-eh-1-agentview.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Agent</span>
+                                            </div>
+                                            <div class="ub-vwrap">
+                                                <video autoplay muted loop playsinline preload="none">
+                                                    <source src="static/videos/cond-eh-1-wrist.mp4" type="video/mp4">
+                                                </video>
+                                                <span class="ub-cam-label">Wrist</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="video-slide-caption">
-                                <b>Online Defense.</b> A deployment-time example showing guard-triggered intervention.
+                                <b>Unsafe Behavior Gallery.</b> RedVLA elicits diverse unsafe behaviors across three safety cost levels (State / Cumulative / Conditional) and four physical hazard categories. Each card shows agent-view and wrist-view simultaneously.
                             </div>
                         </div>
                     </div>
@@ -409,11 +730,11 @@
                             </p>
                         </div>
                         <div class="figure-panel">
-                            <img src="static/images/redvla_figure1.png" alt="RedVLA overview figure">
+                            <img src="static/images/figure1-1.png" alt="RedVLA overview figure">
                             <div class="figure-caption">
                                 RedVLA starts from a benign VLA setting, introduces an injected physical risk factor, and elicits
-                                unsafe behaviors across three safety cost types. The overall evaluation on six mainstream VLA
-                                models reports an average ASR of 91.1%.
+                                unsafe behaviors across three safety cost types. The across six mainstream VLA
+                                models achieves the highest Attack Success Rate (ASR) of 95.5%.
                             </div>
                         </div>
                         <div class="content has-text-justified" style="margin-top: 1.5rem;">
@@ -423,7 +744,7 @@
                                 Synthesis constructs a valid and task-feasible initial risk scene. Specifically, it identifies
                                 critical interaction regions from benign trajectories and places the risk factor within these
                                 regions, aiming to entangle it with the VLA's execution flow and elicit a target unsafe behavior.
-                                (II) Trajectory-Driven Iterative Optimization ensures stable elicitation across diverse models. It
+                                (II) Trajectory-Driven Risk Amplification ensures stable elicitation across diverse models. It
                                 iteratively refines the risk factor state through gradient-free optimization guided by trajectory
                                 features.
                             </p>
@@ -452,22 +773,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="metric-grid">
+                <div class="metric-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
                     <div class="metric-card">
-                        <span class="metric-value">91.1%</span>
-                        <span class="metric-label">Average ASR</span>
+                        <span class="metric-value">95.5%</span>
+                        <span class="metric-label">Peak ASR on π<sub>0.5</sub></span>
                     </div>
                     <div class="metric-card">
                         <span class="metric-value">6</span>
                         <span class="metric-label">Mainstream VLA models</span>
                     </div>
                     <div class="metric-card">
-                        <span class="metric-value">10</span>
+                        <span class="metric-value">≤10</span>
                         <span class="metric-label">Optimization iterations</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-value">59.5%</span>
-                        <span class="metric-label">Guard metric placeholder</span>
                     </div>
                 </div>
             </div>
@@ -501,7 +818,7 @@
                                 corresponding risk object.
                             </p>
                             <p>
-                                <b>Trajectory-Driven Iterative Optimization</b> ensures stable elicitation across diverse models by
+                                <b>Trajectory-Driven Risk Amplification</b> ensures stable elicitation across diverse models by
                                 refining the injected risk factor with trajectory-guided gradient-free optimization.
                             </p>
                         </div>
@@ -509,7 +826,7 @@
                     <div class="column">
                         <div class="feature-card">
                             <h3 class="title is-4">Key Findings</h3>
-                            <span class="result-chip">91.1% average ASR</span>
+                            <span class="result-chip">95.5% peak ASR</span>
                             <span class="result-chip">6 VLA models</span>
                             <span class="result-chip">10 iterations</span>
                             <span class="result-chip">SimpleVLA-Guard</span>
@@ -531,7 +848,7 @@
                     <div class="column is-10">
                         <h2 class="title is-3">Framework</h2>
                         <div class="figure-panel">
-                            <img src="static/images/redvla_framework.png" alt="RedVLA framework diagram">
+                            <img src="static/images/figure2-1.png" alt="RedVLA framework diagram">
                             <div class="figure-caption">
                                 The framework summarizes RedVLA as a two-stage pipeline. Risk Scenario Synthesis combines physical
                                 safety taxonomy, interaction identification, and risk instantiation to build a red teaming plan.
@@ -545,54 +862,19 @@
         </div>
     </section>
 
-    <section class="section" id="guard">
-        <div class="container is-max-widescreen">
-            <div class="section-shell">
-                <div class="columns">
-                    <div class="column is-half">
-                        <h2 class="title is-3">SimpleVLA-Guard</h2>
-                        <p>
-                            RedVLA-generated risky trajectories can be paired with benign trajectories to train a lightweight safety
-                            guard. The current draft studies both offline detection and online defense using internal
-                            representations of the VLA policy.
-                        </p>
-                        <p>
-                            The feature visualizations below show that safe and unsafe trajectories occupy structurally different
-                            regions in the latent space, motivating guard construction on top of VLA features.
-                        </p>
-                        <div style="margin-top: 1rem;">
-                            <span class="result-chip">89.6% offline recall</span>
-                            <span class="result-chip">59.5% ASR reduction</span>
-                            <span class="result-chip">82.5% retained benign SR</span>
-                        </div>
-                    </div>
-                    <div class="column is-half">
-                        <div class="guard-grid">
-                            <div class="figure-panel">
-                                <img src="static/images/redvla_libero_and_redteam.png" alt="Latent features from benign and RedVLA scenarios">
-                                <div class="guard-subcaption"><b>(A)</b> Internal representations of pi0 from both benign LIBERO scenarios and RedVLA-synthesized risk scenarios.</div>
-                            </div>
-                            <div class="figure-panel">
-                                <img src="static/images/redvla_libero_only.png" alt="Latent features from benign scenarios only">
-                                <div class="guard-subcaption"><b>(B)</b> Internal representations of pi0 from benign LIBERO scenarios only.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section" id="bibtex">
         <div class="container is-max-desktop">
             <div class="section-shell">
                 <h2 class="title is-3 has-text-centered">BibTeX</h2>
                 <div class="bibtex-box">
-<pre><code>@article{redvla2026,
-  title   = {RedVLA: Physical Red Teaming for Vision-Language-Action Models},
-  author  = {Zhang, Yuhao and Zhang, Borong and Fan, Jiaming and Shen, Jiachen and Cai, Yishuai and Yang, Yaodong and Ji, Jiaming},
-  journal = {arXiv preprint},
-  year    = {2026}
+<pre><code>@misc{zhang2026redvlaphysicalredteaming,
+    title={RedVLA: Physical Red Teaming for Vision-Language-Action Models}, 
+    author={Yuhao Zhang and Borong Zhang and Jiaming Fan and Jiachen Shen and Yishuai Cai and Yaodong Yang and Jiaming Ji},
+    year={2026},
+    eprint={2604.22591},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO},
+    url={https://arxiv.org/abs/2604.22591}, 
 }</code></pre>
                 </div>
             </div>
@@ -609,10 +891,58 @@
             bulmaCarousel.attach("#redvla-demo-carousel", {
                 slidesToScroll: 1,
                 slidesToShow: 1,
-                loop: true,
-                pagination: true,
-                navigation: true,
+                loop: false,
+                pagination: false,
+                navigation: false,
                 autoplay: false
+            });
+
+            // Mini-slider for DIM / RED cards
+            document.querySelectorAll('.ub-slider').forEach(function (slider) {
+                var slides = slider.querySelectorAll('.ub-slide');
+                var counter = slider.querySelector('.ub-slide-counter');
+                var taskEl = slider.querySelector('.ub-slide-task');
+                var current = 0;
+
+                function goTo(idx) {
+                    slides[current].querySelectorAll('video').forEach(function (v) { v.pause(); });
+                    slides[current].classList.remove('ub-slide-active');
+                    current = (idx + slides.length) % slides.length;
+                    slides[current].classList.add('ub-slide-active');
+                    slides[current].querySelectorAll('video').forEach(function (v) { v.play(); });
+                    counter.textContent = (current + 1) + ' / ' + slides.length;
+                    taskEl.textContent = '“' + slides[current].dataset.task + '”';
+                }
+
+                // init display
+                counter.textContent = '1 / ' + slides.length;
+                taskEl.textContent = '“' + slides[0].dataset.task + '”';
+
+                slider.querySelectorAll('.ub-nav-btn').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        goTo(current + parseInt(btn.dataset.dir));
+                    });
+                });
+            });
+
+            // Tab switching for Unsafe Behavior Gallery
+            var tabs = document.querySelectorAll('#ub-tabbar .ub-tab');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    // deactivate all
+                    tabs.forEach(function (t) { t.classList.remove('ub-active'); });
+                    document.querySelectorAll('.ub-panel').forEach(function (p) {
+                        p.classList.remove('ub-visible');
+                        // pause all videos in hidden panels
+                        p.querySelectorAll('video').forEach(function (v) { v.pause(); });
+                    });
+                    // activate selected
+                    tab.classList.add('ub-active');
+                    var target = document.getElementById(tab.dataset.target);
+                    target.classList.add('ub-visible');
+                    // play videos in active panel
+                    target.querySelectorAll('video').forEach(function (v) { v.play(); });
+                });
             });
         });
     </script>
