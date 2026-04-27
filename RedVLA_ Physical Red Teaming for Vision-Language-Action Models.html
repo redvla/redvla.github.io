@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RedVLA: Physical Red Teaming for Vision-Language-Action Models</title>
+    <meta name="description" content="RedVLA: Physical Red Teaming for Vision-Language-Action Models">
+    <meta name="keywords" content="Vision-Language-Action, Robotics Safety, Red Teaming, Embodied AI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/bulma.min.css">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/bulma-slider.min.css">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/academicons.min.css">
+    <link rel="stylesheet" href="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/index.css">
+
+    <style>
+        :root {
+            --redvla-accent: #9f1d20;
+            --redvla-accent-soft: #f7e8e8;
+            --redvla-ink: #1c1c1c;
+            --redvla-muted: #5d6772;
+            --redvla-surface: #fffdfc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--redvla-ink);
+            background: #ffffff;
+        }
+
+        .hero.is-redvla {
+            background: linear-gradient(180deg, #fff8f7 0%, #ffffff 100%);
+        }
+
+        .publication-title {
+            line-height: 1.12;
+        }
+
+        .conference-authors,
+        .publication-authors {
+            color: var(--redvla-muted);
+        }
+
+        .publication-authors {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .publication-authors a,
+        .conference-authors a {
+            color: var(--redvla-accent);
+        }
+
+        .author-line {
+            display: block;
+        }
+
+        .affiliation-block {
+            margin-top: 0.65rem;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            color: #6a7380;
+        }
+
+        .affiliation-note {
+            display: inline-block;
+            margin-top: 0.35rem;
+            font-size: 0.92rem;
+            color: #7c8490;
+        }
+
+        .paper-links .button {
+            margin: 0.25rem;
+        }
+
+        .section-shell {
+            border: 1px solid #eceef1;
+            border-radius: 24px;
+            background: var(--redvla-surface);
+            box-shadow: 0 10px 28px rgba(18, 24, 40, 0.04);
+            padding: 2rem;
+        }
+
+        .teaser-placeholder,
+        .demo-placeholder {
+            border: 2px dashed #d6d9de;
+            border-radius: 18px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: #7a7f87;
+            background: #fafbfc;
+        }
+
+        .figure-panel {
+            border-radius: 18px;
+            border: 1px solid #eceef1;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(18, 24, 40, 0.04);
+        }
+
+        .figure-panel img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .figure-caption {
+            padding: 1rem 1.1rem 1.2rem;
+            color: #4d5560;
+            font-size: 0.97rem;
+        }
+
+        .feature-card {
+            height: 100%;
+            border: 1px solid #eceef1;
+            border-radius: 18px;
+            padding: 1.25rem;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(18, 24, 40, 0.04);
+        }
+
+        .feature-card h3 {
+            color: var(--redvla-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-note {
+            color: var(--redvla-muted);
+            margin-top: 0.75rem;
+        }
+
+        .result-chip {
+            display: inline-block;
+            margin: 0.25rem 0.35rem 0.25rem 0;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: var(--redvla-accent-soft);
+            color: var(--redvla-accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .metric-card {
+            border: 1px solid #eceef1;
+            border-radius: 18px;
+            padding: 1rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--redvla-accent);
+            line-height: 1.1;
+        }
+
+        .metric-label {
+            display: block;
+            margin-top: 0.3rem;
+            color: var(--redvla-muted);
+            font-size: 0.95rem;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .demo-card {
+            border: 1px solid #eceef1;
+            border-radius: 18px;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(18, 24, 40, 0.04);
+        }
+
+        .demo-card-header {
+            padding: 0.85rem 1rem;
+            font-weight: 700;
+            border-bottom: 1px solid #eceef1;
+            background: #fcfcfd;
+        }
+
+        .demo-card-body {
+            padding: 1rem;
+        }
+
+        .carousel-shell {
+            border: 1px solid #eceef1;
+            border-radius: 24px;
+            background: var(--redvla-surface);
+            box-shadow: 0 10px 28px rgba(18, 24, 40, 0.04);
+            padding: 1.25rem;
+            overflow: hidden;
+        }
+
+        .carousel .item {
+            padding: 0.35rem;
+        }
+
+        .carousel,
+        .carousel .slider,
+        .carousel .slider-container {
+            overflow: hidden !important;
+        }
+
+        .video-slide {
+            border: 1px solid #eceef1;
+            border-radius: 18px;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(18, 24, 40, 0.04);
+        }
+
+        .video-placeholder {
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f7f8fa 0%, #eef1f4 100%);
+            color: #737984;
+            padding: 1.5rem;
+        }
+
+        .video-slide-caption {
+            padding: 1rem 1.1rem 1.15rem;
+            border-top: 1px solid #eceef1;
+            color: #4d5560;
+        }
+
+        .guard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .guard-subcaption {
+            padding: 0.85rem 1rem 1rem;
+            color: #4d5560;
+            font-size: 0.94rem;
+            border-top: 1px solid #eceef1;
+        }
+
+        .bibtex-box {
+            border-radius: 18px;
+            background: #ffffff;
+            color: #24303d;
+            border: 1px solid #eceef1;
+            padding: 1.25rem;
+            overflow-x: auto;
+            font-size: 0.92rem;
+        }
+
+        .bibtex-box pre,
+        .bibtex-box code {
+            background: transparent !important;
+            color: inherit !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        @media screen and (max-width: 900px) {
+            .metric-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero is-redvla">
+        <div class="hero-body">
+            <div class="container is-max-desktop" id="top">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">RedVLA: Physical Red Teaming<br>for Vision-Language-Action Models</h1>
+
+                        <div class="publication-authors" style="margin-top: 1.25rem;">
+                            <span class="author-line">
+                                <span class="author-block">Yuhao Zhang<sup>1,*</sup>,</span>
+                                <span class="author-block">Borong Zhang<sup>1,*</sup>,</span>
+                                <span class="author-block">Jiaming Fan<sup>1</sup>,</span>
+                            </span>
+                            <span class="author-line">
+                                <span class="author-block">Jiachen Shen<sup>1</sup>,</span>
+                                <span class="author-block">Yishuai Cai<sup>1</sup>,</span>
+                                <span class="author-block">Yaodong Yang<sup>1,&dagger;</sup>,</span>
+                                <span class="author-block">Jiaming Ji<sup>1,&dagger;</sup></span>
+                            </span>
+                        </div>
+                        <div class="affiliation-block">
+                            <span class="author-block"><sup>1</sup>Institute for AI, Peking University</span>
+                            <br>
+                            <span class="author-block">State Key Laboratory of General Artificial Intelligence, Peking University</span>
+                            <br>
+                            <span class="affiliation-note"><sup>*</sup>Equal contribution</span>
+                            <span class="affiliation-note"><sup>&dagger;</sup>Corresponding author</span>
+                        </div>
+
+                        <div class="paper-links" style="margin-top: 1.25rem;">
+                            <a class="button is-dark is-rounded" href="javascript:void(0)">
+                                <span class="icon"><i class="fas fa-file"></i></span>
+                                <span>Paper</span>
+                            </a>
+                            <a class="button is-dark is-rounded" href="javascript:void(0)">
+                                <span class="icon"><i class="fab fa-github"></i></span>
+                                <span>Code</span>
+                            </a>
+                            <a class="button is-dark is-rounded" href="javascript:void(0)">
+                                <span class="icon"><i class="fas fa-database"></i></span>
+                                <span>Data</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="abstract">
+        <div class="container is-max-desktop">
+            <div class="carousel-shell">
+                <div id="redvla-demo-carousel" class="carousel">
+                    <div class="item">
+                        <div class="video-slide">
+                            <div class="video-placeholder">
+                                <div>
+                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Teaser Placeholder</p>
+                                    <p>Figure 1 teaser video can be inserted here.</p>
+                                </div>
+                            </div>
+                            <div class="video-slide-caption">
+                                <b>Teaser.</b> A short overview clip for the RedVLA pipeline and key findings.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="video-slide">
+                            <div class="video-placeholder">
+                                <div>
+                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Unsafe Behavior Demo</p>
+                                    <p>Representative RedVLA rollout can be inserted here.</p>
+                                </div>
+                            </div>
+                            <div class="video-slide-caption">
+                                <b>Physical Red Teaming.</b> A rollout showing how an injected risk object leads to a target unsafe behavior.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="video-slide">
+                            <div class="video-placeholder">
+                                <div>
+                                    <p class="title is-5" style="margin-bottom: 0.5rem;">Guard Demo</p>
+                                    <p>SimpleVLA-Guard intervention video can be inserted here.</p>
+                                </div>
+                            </div>
+                            <div class="video-slide-caption">
+                                <b>Online Defense.</b> A deployment-time example showing guard-triggered intervention.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="overview">
+        <div class="container is-max-widescreen">
+            <div class="section-shell">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-10">
+                        <h2 class="title is-3">Overview</h2>
+                        <div class="content has-text-justified" style="margin-bottom: 1.25rem;">
+                            <p>
+                                Vision-Language-Action (VLA) models are advancing toward generalist robotic policies through
+                                unified end-to-end learning from vision and language to action. As their capabilities expand
+                                across increasingly important real-world domains, safety concerns have also grown substantially.
+                                Yet it remains unclear what physical safety risks these models may exhibit when deployed in the
+                                physical world, and how severe their consequences may be. Proactively identifying and mitigating
+                                such risks is therefore a crucial prerequisite for real-world deployment. This work asks: how can
+                                we proactively uncover the physical safety risks of Vision-Language-Action models?
+                            </p>
+                        </div>
+                        <div class="figure-panel">
+                            <img src="static/images/redvla_figure1.png" alt="RedVLA overview figure">
+                            <div class="figure-caption">
+                                RedVLA starts from a benign VLA setting, introduces an injected physical risk factor, and elicits
+                                unsafe behaviors across three safety cost types. The overall evaluation on six mainstream VLA
+                                models reports an average ASR of 91.1%.
+                            </div>
+                        </div>
+                        <div class="content has-text-justified" style="margin-top: 1.5rem;">
+                            <p>
+                                In this work, we propose RedVLA, the first red teaming framework for physical safety in VLA
+                                models. We systematically elicit unsafe behaviors through a two-stage process: (I) Risk Scenario
+                                Synthesis constructs a valid and task-feasible initial risk scene. Specifically, it identifies
+                                critical interaction regions from benign trajectories and places the risk factor within these
+                                regions, aiming to entangle it with the VLA's execution flow and elicit a target unsafe behavior.
+                                (II) Trajectory-Driven Iterative Optimization ensures stable elicitation across diverse models. It
+                                iteratively refines the risk factor state through gradient-free optimization guided by trajectory
+                                features.
+                            </p>
+                            <!-- <p>
+                                We summarize the main contributions as follows:
+                            </p>
+                            <p>
+                                <b>Paradigm and Framework.</b> We define the problem of VLA red teaming and proposed RedVLA, a
+                                framework that uncovers physical safety risks. It proactively injects risk factors to elicit
+                                diverse unsafe behaviors, without compromising the benign nature of original scene and the semantic
+                                consistency of task instructions.
+                            </p>
+                            <p>
+                                <b>Key Findings.</b> (I) RedVLA reveals severe vulnerabilities in VLA models, eliciting diverse
+                                unsafe behaviors across six mainstream models. (II) It effectively achieves an average Attack
+                                Success Rate of 91.1% within 10 iterations. (III) Furthermore, analysis of internal
+                                representations demonstrates that VLA models encode latent safety-relevant signals, highlighting
+                                their potential for safety monitoring and intervention.
+                            </p>
+                            <p>
+                                <b>Defense Strategy.</b> To mitigate physical safety risks, we develop SimpleVLA-Guard to detect
+                                and intervene in unsafe behaviors. By leveraging intent representations from both
+                                RedVLA-generated data and benign scenarios, SimpleVLA-Guard effectively reduces the overall ASR by
+                                73.6%.
+                            </p> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <span class="metric-value">91.1%</span>
+                        <span class="metric-label">Average ASR</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">6</span>
+                        <span class="metric-label">Mainstream VLA models</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">10</span>
+                        <span class="metric-label">Optimization iterations</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">59.5%</span>
+                        <span class="metric-label">Guard metric placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <div class="section-shell">
+                <div class="columns">
+                    <div class="column">
+                        <div class="feature-card">
+                            <h3 class="title is-4">What RedVLA Does</h3>
+                            <p>
+                                RedVLA studies physical safety risks in VLA models under benign instructions and scenes. It keeps
+                                the language input fixed and perturbs only the physical scene by injecting a risk object into the
+                                robot's execution flow.
+                            </p>
+                            <p class="section-note">
+                                The method is designed to preserve task feasibility and scene-instruction consistency while still
+                                exposing target unsafe behaviors.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="feature-card">
+                            <h3 class="title is-4">Two-Stage Pipeline</h3>
+                            <p>
+                                <b>Risk Scenario Synthesis</b> constructs a valid and task-feasible initial risk scene by
+                                identifying critical interaction regions and instantiating a target safety violation with a
+                                corresponding risk object.
+                            </p>
+                            <p>
+                                <b>Trajectory-Driven Iterative Optimization</b> ensures stable elicitation across diverse models by
+                                refining the injected risk factor with trajectory-guided gradient-free optimization.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="feature-card">
+                            <h3 class="title is-4">Key Findings</h3>
+                            <span class="result-chip">91.1% average ASR</span>
+                            <span class="result-chip">6 VLA models</span>
+                            <span class="result-chip">10 iterations</span>
+                            <span class="result-chip">SimpleVLA-Guard</span>
+                            <p class="section-note">
+                                RedVLA reveals severe physical vulnerabilities in existing VLA policies and produces data that can
+                                be reused for deployment-time safety monitoring.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="framework">
+        <div class="container is-max-widescreen">
+            <div class="section-shell">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-10">
+                        <h2 class="title is-3">Framework</h2>
+                        <div class="figure-panel">
+                            <img src="static/images/redvla_framework.png" alt="RedVLA framework diagram">
+                            <div class="figure-caption">
+                                The framework summarizes RedVLA as a two-stage pipeline. Risk Scenario Synthesis combines physical
+                                safety taxonomy, interaction identification, and risk instantiation to build a red teaming plan.
+                                Trajectory-Driven Risk Amplification then refines the injected risk factor to trigger the target
+                                unsafe behavior.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="guard">
+        <div class="container is-max-widescreen">
+            <div class="section-shell">
+                <div class="columns">
+                    <div class="column is-half">
+                        <h2 class="title is-3">SimpleVLA-Guard</h2>
+                        <p>
+                            RedVLA-generated risky trajectories can be paired with benign trajectories to train a lightweight safety
+                            guard. The current draft studies both offline detection and online defense using internal
+                            representations of the VLA policy.
+                        </p>
+                        <p>
+                            The feature visualizations below show that safe and unsafe trajectories occupy structurally different
+                            regions in the latent space, motivating guard construction on top of VLA features.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span class="result-chip">89.6% offline recall</span>
+                            <span class="result-chip">59.5% ASR reduction</span>
+                            <span class="result-chip">82.5% retained benign SR</span>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <div class="guard-grid">
+                            <div class="figure-panel">
+                                <img src="static/images/redvla_libero_and_redteam.png" alt="Latent features from benign and RedVLA scenarios">
+                                <div class="guard-subcaption"><b>(A)</b> Internal representations of pi0 from both benign LIBERO scenarios and RedVLA-synthesized risk scenarios.</div>
+                            </div>
+                            <div class="figure-panel">
+                                <img src="static/images/redvla_libero_only.png" alt="Latent features from benign scenarios only">
+                                <div class="guard-subcaption"><b>(B)</b> Internal representations of pi0 from benign LIBERO scenarios only.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="bibtex">
+        <div class="container is-max-desktop">
+            <div class="section-shell">
+                <h2 class="title is-3 has-text-centered">BibTeX</h2>
+                <div class="bibtex-box">
+<pre><code>@article{redvla2026,
+  title   = {RedVLA: Physical Red Teaming for Vision-Language-Action Models},
+  author  = {Zhang, Yuhao and Zhang, Borong and Fan, Jiaming and Shen, Jiachen and Cai, Yishuai and Yang, Yaodong and Ji, Jiaming},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/jquery.min.js.download"></script>
+    <script defer src="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/fontawesome.all.min.js.download"></script>
+    <script src="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/bulma-carousel.min.js.download"></script>
+    <script src="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/bulma-slider.min.js.download"></script>
+    <script src="./RedVLA_ Physical Red Teaming for Vision-Language-Action Models_files/index.js.download"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            bulmaCarousel.attach("#redvla-demo-carousel", {
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                loop: true,
+                pagination: true,
+                navigation: true,
+                autoplay: false
+            });
+        });
+    </script>
+</body>
+</html>
